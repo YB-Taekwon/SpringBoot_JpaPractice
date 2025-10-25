@@ -2,16 +2,17 @@ package com.ian.jpapractice.repository;
 
 import com.ian.jpapractice.domain.User;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
+
 public class UserRepository {
 
-    @PersistenceContext
-    private EntityManager em;
+    private final EntityManager em;
 
     public void save(User user) {
         em.persist(user);
