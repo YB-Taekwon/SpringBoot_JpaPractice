@@ -1,0 +1,30 @@
+package com.ian.jpapractice.service;
+
+import com.ian.jpapractice.domain.product.Product;
+import com.ian.jpapractice.repository.ProductRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+@Transactional(readOnly = true)
+public class ProductService {
+
+    private final ProductRepository productRepository;
+
+    @Transactional
+    public void save(Product product) {
+        productRepository.save(product);
+    }
+
+    public List<Product> findAll() {
+        return productRepository.findAll();
+    }
+
+    public Product findById(Long id) {
+        return productRepository.findById(id);
+    }
+}
