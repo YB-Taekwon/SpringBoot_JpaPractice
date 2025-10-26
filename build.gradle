@@ -34,6 +34,9 @@ dependencies {
     // thymeleaf
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
+    // validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
     // devtools
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
@@ -53,10 +56,6 @@ dependencies {
     // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-}
-
-sourceSets {
-    main.java.srcDirs += "$projectDir/build/generated/sources/annotationProcessor/java/main"
 }
 
 tasks.named('test') {
