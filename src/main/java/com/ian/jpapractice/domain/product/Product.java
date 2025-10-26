@@ -43,11 +43,10 @@ public abstract class Product {
 
     // 재고 감소
     public void removeStock(int stock) {
-        int oldStock = this.stock - stock;
-        if (oldStock < 0) {
+        int restStock = this.stock - stock;
+        if (restStock < 0) {
             throw new NotEnoughStockException("재고가 부족합니다.");
         }
-
-        this.stock -= oldStock;
+        this.stock = restStock;
     }
 }
