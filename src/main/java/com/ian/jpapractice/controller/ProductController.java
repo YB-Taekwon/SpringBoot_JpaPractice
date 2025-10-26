@@ -6,10 +6,7 @@ import com.ian.jpapractice.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -44,5 +41,18 @@ public class ProductController {
     public String getAllProducts(Model model) {
         model.addAttribute("products", productService.findAll());
         return "/products/productList";
+    }
+
+    @GetMapping("/{productId}/edit")
+    public String editBookForm(@PathVariable Long productId, Model model) {
+        Book book = (Book) productService.findById(productId);
+        model.addAttribute("book", book);
+        return "/products/editProduct";
+    }
+
+    @PostMapping("/{productId}/edit")
+    public String editBook(@PathVariable Long productId, @ModelAttribute BookDto bookDto, Model model) {
+        productService.editBook(productId, bookDto);
+        return "redirect:/products";
     }
 }
