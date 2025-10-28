@@ -18,7 +18,7 @@ public class ProductController {
     @GetMapping("/create")
     public String createBookForm(Model model) {
         model.addAttribute("bookDto", new BookDto());
-        return "/products/createBook";
+        return "products/createBook";
     }
 
     @PostMapping("/create")
@@ -40,14 +40,14 @@ public class ProductController {
     @GetMapping
     public String getAllProducts(Model model) {
         model.addAttribute("products", productService.findAll());
-        return "/products/productList";
+        return "products/productList";
     }
 
     @GetMapping("/{productId}/edit")
     public String editBookForm(@PathVariable Long productId, Model model) {
         Book book = (Book) productService.findById(productId);
         model.addAttribute("book", book);
-        return "/products/editProduct";
+        return "products/editProduct";
     }
 
     @PostMapping("/{productId}/edit")
